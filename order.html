@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order fresh conchas from FCA Baking - Vanilla and chocolate conchas delivered to Manhattan, KS. $3 each.">
+  <title>Order Conchas | FCA Baking</title>
+  <link rel="icon" href="images/FCA baking logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/FCA baking logo.png" alt="FCA Baking Logo">
+        <span class="logo-text">FCA Baking</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html" class="active">Order</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>Order Conchas</h1>
+      <p>Place your order below. We'll reach out to confirm before baking. Payment (Cash or CashApp) is collected at delivery.</p>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="order-form-section">
+          <div class="contact-banner">
+            <strong>Questions or concerns?</strong> Email us at <a href="mailto:fcabaking@gmail.com">fcabaking@gmail.com</a>
+          </div>
+          <div class="allergy-warning">
+            <strong>Allergy Notice:</strong> Our baking products may contain eggs, wheat, milk, tree nuts, soy, sesame, and peanuts. 
+            We reach out to confirm every order — please let us know about any allergies when we contact you, or message us beforehand!
+          </div>
+
+          <!-- Form POSTs directly to Google Apps Script — handles Sheet, emails, redirect. Works from file:// or any server. -->
+          <form id="order-form" action="https://script.google.com/macros/s/AKfycbx1GaQwpkverFjCY0T8KZ7Y3xAlfhw-Kkz4gJ0_hVyojCEgWYGOh_8BPtWB4mGxLovT0A/exec" method="POST">
+            <input type="hidden" name="order_id" id="order-id" value="">
+            <input type="hidden" name="primary_contact" id="primary-contact-hidden" value="">
+            <input type="hidden" name="redirect_base" id="redirect-base" value="">
+            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+
+            <h3 style="margin-bottom: 1rem; color: var(--color-chocolate);">Your Order</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Vanilla Conchas <span class="required">*</span></label>
+                <input type="number" name="vanilla_qty" id="vanilla-qty" min="0" value="0" required>
+              </div>
+              <div class="form-group">
+                <label>Chocolate Conchas <span class="required">*</span></label>
+                <input type="number" name="chocolate_qty" id="chocolate-qty" min="0" value="0" required>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--color-cinnamon); margin-bottom: 1rem;">$3 per concha</p>
+
+            <div class="order-summary">
+              <h4>Order Total</h4>
+              <p id="order-summary">0 vanilla + 0 chocolate = $0</p>
+              <p class="total" id="order-total">$0</p>
+              <input type="hidden" name="order_total" id="order-total-hidden" value="0">
+            </div>
+
+            <h3 style="margin: 2rem 0 1rem; color: var(--color-chocolate);">Your Information</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="required">*</span></label>
+                <input type="text" id="first-name" name="first_name" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="required">*</span></label>
+                <input type="text" id="last-name" name="last_name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Phone & Email <span class="required">*</span></label>
+              <p style="font-size: 0.9rem; color: var(--color-cinnamon); margin-bottom: 0.5rem;">Both are required. We'll send your order confirmation to your preferred contact.</p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone" class="form-sublabel">Phone <span class="required">*</span></label>
+                  <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-sublabel">Email <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" required placeholder="you@example.com">
+                </div>
+              </div>
+              <div id="primary-contact-group" class="form-group" style="margin-top: 1rem; padding: 1rem; background: var(--color-vanilla); border-radius: 8px; border: 1px solid var(--color-golden);">
+                <label>How would you like to receive your confirmation? <span class="required">*</span></label>
+                <div class="radio-group" style="margin-top: 0.5rem;">
+                  <label class="radio-option">
+                    <input type="radio" id="primary-email" name="primary_contact_choice" value="email" checked>
+                    Email
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" id="primary-text" name="primary_contact_choice" value="text">
+                    Text message
+                  </label>
+                </div>
+              </div>
+              <span id="contact-error" class="form-message error" style="display: none;">Please provide both phone and email.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="address-line1">Street Address <span class="required">*</span></label>
+              <input type="text" id="address-line1" name="address_line1" required placeholder="123 Main St" autocomplete="address-line1">
+            </div>
+            <div class="form-group">
+              <label for="address-line2">Address Line 2 <span class="form-optional">(optional)</span></label>
+              <input type="text" id="address-line2" name="address_line2" placeholder="Apt, suite, unit, building, floor, etc." autocomplete="address-line2">
+            </div>
+            <div class="form-row form-row-3">
+              <div class="form-group">
+                <label for="address-city">City <span class="required">*</span></label>
+                <input type="text" id="address-city" name="address_city" required placeholder="Manhattan" autocomplete="address-level2">
+              </div>
+              <div class="form-group">
+                <label for="address-state">State <span class="required">*</span></label>
+                <input type="text" id="address-state" name="address_state" required placeholder="KS" maxlength="2" pattern="[A-Za-z]{2}" title="2-letter state code" autocomplete="address-level1">
+              </div>
+              <div class="form-group">
+                <label for="address-zip">ZIP Code <span class="required">*</span></label>
+                <input type="text" id="address-zip" name="address_zip" required placeholder="66502" pattern="[0-9]{5}(-[0-9]{4})?" title="5 or 9-digit ZIP code" autocomplete="postal-code">
+              </div>
+            </div>
+            <input type="hidden" name="address" id="address-combined" value="">
+
+            <div class="form-group">
+              <label>Payment Method <span class="required">*</span></label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="payment" value="CashApp" required>
+                  CashApp
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="payment" value="Cash">
+                  Cash
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem;">
+              Submit Order
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <img src="images/Logo.png" alt="FCA Baking" class="footer-logo footer-logo-secondary">
+        <h4>FCA Baking</h4>
+        <p>Authentic conchas in Manhattan, KS</p>
+        <p style="margin-top: 0.5rem;"><a href="mailto:fcabaking@gmail.com">Questions? Email us</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="menu.html">Menu</a><br>
+        <a href="order.html">Order</a><br>
+        <a href="about.html">About</a>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="https://instagram.com/fcabaking" target="_blank" rel="noopener">Instagram @fcabaking</a><br>
+        <a href="https://snapchat.com/add/fcabaking" target="_blank" rel="noopener">Snapchat @fcabaking</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; FCA Baking. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/order.js"></script>
+</body>
+</html>

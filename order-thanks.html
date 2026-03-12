@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Received | FCA Baking</title>
+  <link rel="icon" href="images/FCA baking logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/FCA baking logo.png" alt="FCA Baking Logo">
+        <span class="logo-text">FCA Baking</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="text-align: center; max-width: 600px;">
+        <h1 style="color: var(--color-chocolate); margin-bottom: 1rem;">¡Gracias! Order Received</h1>
+        <div id="order-id-display" style="margin-bottom: 1.5rem; padding: 1rem 1.5rem; background: var(--color-pink-light); border-radius: 12px; border: 2px solid var(--color-pink); display: inline-block;">
+          <p style="font-size: 0.9rem; color: var(--color-cinnamon); margin-bottom: 0.25rem;">Your Order ID</p>
+          <p id="order-id-value" style="font-size: 1.5rem; font-weight: 700; color: var(--color-chocolate);">—</p>
+        </div>
+        <p style="font-size: 1rem; color: var(--color-cinnamon); margin-bottom: 1rem;">
+          Save this number — reference it when we reach out to confirm. You'll also receive it via email or text based on your preference.
+        </p>
+        <p style="font-size: 1.2rem; color: var(--color-cinnamon); margin-bottom: 1.5rem;">
+          Thank you for your order! We'll reach out shortly to confirm the details and arrange delivery. 
+          Payment will be collected in person when we deliver your fresh conchas.
+        </p>
+        <p style="margin-bottom: 2rem;">
+          Questions? Reach out when we contact you — we're happy to help with any allergies or special requests.
+        </p>
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <img src="images/Logo.png" alt="FCA Baking" class="footer-logo footer-logo-secondary">
+        <h4>Contact</h4>
+        <a href="mailto:fcabaking@gmail.com">Questions? Email us</a>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="https://instagram.com/fcabaking" target="_blank" rel="noopener">Instagram @fcabaking</a><br>
+        <a href="https://snapchat.com/add/fcabaking" target="_blank" rel="noopener">Snapchat @fcabaking</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; FCA Baking. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      if (window.self !== window.top) window.top.location = window.location.href;
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order_id');
+      const el = document.getElementById('order-id-value');
+      if (el && orderId) el.textContent = orderId;
+    })();
+  </script>
+</body>
+</html>
