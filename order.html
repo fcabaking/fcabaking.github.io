@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Order fresh conchas from FCA Baking - Vanilla and chocolate conchas delivered to Manhattan, KS. $3 each.">
+  <meta name="description" content="Order conchas, promo bundles, and Abuelitas hot chocolate from FCA Baking — Manhattan, KS.">
   <title>Order Conchas | FCA Baking</title>
   <link rel="icon" href="images/FCA baking logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,24 +51,148 @@
             <input type="hidden" name="redirect_base" id="redirect-base" value="">
             <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
 
-            <h3 style="margin-bottom: 1rem; color: var(--color-chocolate);">Your Order</h3>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Vanilla Conchas <span class="required">*</span></label>
-                <input type="number" name="vanilla_qty" id="vanilla-qty" min="0" value="0" required>
+            <h3 class="order-form-heading">Your Order</h3>
+            <p class="order-form-lede">Start with how many of each deal you want. Flavor rows stay tucked away until you pick a quantity, so the page stays simple.</p>
+
+            <p class="order-steps"><strong>How it works:</strong> (1) Enter a quantity for any bundle. (2) When that row opens, split vanilla vs chocolate so the count matches. (3) Add cup-only Abuelitas if you like, then fill in your details and submit.</p>
+
+            <h4 class="order-section-title">Concha bundles</h4>
+
+            <div class="order-bundle-card" id="bundle-card-ac">
+              <div class="bundle-top">
+                <div>
+                  <h4>Abuelita + 1 concha</h4>
+                  <p class="bundle-price-line">$3 — 1 hot chocolate + 1 concha</p>
+                </div>
+                <div class="bundle-qty-wrap">
+                  <label for="combo-ac-qty">How many</label>
+                  <input type="number" name="combo_ac_qty" id="combo-ac-qty" min="0" value="0" inputmode="numeric">
+                </div>
               </div>
-              <div class="form-group">
-                <label>Chocolate Conchas <span class="required">*</span></label>
-                <input type="number" name="chocolate_qty" id="chocolate-qty" min="0" value="0" required>
+              <div class="bundle-split">
+                <p class="split-prompt">Those combos include <strong id="split-needed-ac">0</strong> concha(s). Split vanilla + chocolate — they must add up to that number.</p>
+                <div class="split-row">
+                  <div class="form-group">
+                    <label for="combo-ac-vanilla">Vanilla</label>
+                    <input type="number" name="combo_ac_vanilla" id="combo-ac-vanilla" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <div class="form-group">
+                    <label for="combo-ac-chocolate">Chocolate</label>
+                    <input type="number" name="combo_ac_chocolate" id="combo-ac-chocolate" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <span class="split-meter idle" id="split-meter-ac" role="status">0 / 0</span>
+                </div>
               </div>
             </div>
-            <p style="font-size: 0.9rem; color: var(--color-cinnamon); margin-bottom: 1rem;">$3 per concha</p>
+
+            <div class="order-bundle-card" id="bundle-card-p2">
+              <div class="bundle-top">
+                <div>
+                  <h4>2 conchas</h4>
+                  <p class="bundle-price-line">$5 per deal — any mix of vanilla and chocolate</p>
+                </div>
+                <div class="bundle-qty-wrap">
+                  <label for="pack2-qty">How many deals</label>
+                  <input type="number" name="pack2_qty" id="pack2-qty" min="0" value="0" inputmode="numeric">
+                </div>
+              </div>
+              <div class="bundle-split">
+                <p class="split-prompt">You need <strong id="split-needed-p2">0</strong> conchas total across these deals. Enter vanilla + chocolate (combined).</p>
+                <div class="split-row">
+                  <div class="form-group">
+                    <label for="pack2-vanilla">Vanilla (total)</label>
+                    <input type="number" name="pack2_vanilla" id="pack2-vanilla" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <div class="form-group">
+                    <label for="pack2-chocolate">Chocolate (total)</label>
+                    <input type="number" name="pack2_chocolate" id="pack2-chocolate" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <span class="split-meter idle" id="split-meter-p2" role="status">0 / 0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="order-bundle-card" id="bundle-card-p4">
+              <div class="bundle-top">
+                <div>
+                  <h4>4 conchas</h4>
+                  <p class="bundle-price-line">$9 per deal</p>
+                </div>
+                <div class="bundle-qty-wrap">
+                  <label for="pack4-qty">How many deals</label>
+                  <input type="number" name="pack4_qty" id="pack4-qty" min="0" value="0" inputmode="numeric">
+                </div>
+              </div>
+              <div class="bundle-split">
+                <p class="split-prompt">You need <strong id="split-needed-p4">0</strong> conchas total. Split vanilla + chocolate.</p>
+                <div class="split-row">
+                  <div class="form-group">
+                    <label for="pack4-vanilla">Vanilla (total)</label>
+                    <input type="number" name="pack4_vanilla" id="pack4-vanilla" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <div class="form-group">
+                    <label for="pack4-chocolate">Chocolate (total)</label>
+                    <input type="number" name="pack4_chocolate" id="pack4-chocolate" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <span class="split-meter idle" id="split-meter-p4" role="status">0 / 0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="order-bundle-card" id="bundle-card-p8">
+              <div class="bundle-top">
+                <div>
+                  <h4>8 conchas</h4>
+                  <p class="bundle-price-line">$17 per deal</p>
+                </div>
+                <div class="bundle-qty-wrap">
+                  <label for="pack8-qty">How many deals</label>
+                  <input type="number" name="pack8_qty" id="pack8-qty" min="0" value="0" inputmode="numeric">
+                </div>
+              </div>
+              <div class="bundle-split">
+                <p class="split-prompt">You need <strong id="split-needed-p8">0</strong> conchas total. Split vanilla + chocolate.</p>
+                <div class="split-row">
+                  <div class="form-group">
+                    <label for="pack8-vanilla">Vanilla (total)</label>
+                    <input type="number" name="pack8_vanilla" id="pack8-vanilla" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <div class="form-group">
+                    <label for="pack8-chocolate">Chocolate (total)</label>
+                    <input type="number" name="pack8_chocolate" id="pack8-chocolate" min="0" value="0" inputmode="numeric">
+                  </div>
+                  <span class="split-meter idle" id="split-meter-p8" role="status">0 / 0</span>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="order-section-title">Abuelitas hot chocolate</h4>
+            <p class="order-form-lede" style="margin-top: -0.35rem; margin-bottom: 0.75rem;">Cup-only drinks ($3.50 each) — separate from the combo above, which already includes a cup per combo.</p>
+
+            <div class="order-bundle-card order-drinks-card bundle-open" id="bundle-card-abuelita-only">
+              <div class="bundle-top">
+                <div>
+                  <h4>Cup only (no concha)</h4>
+                  <p class="bundle-price-line">$3.50 per cup</p>
+                </div>
+                <div class="bundle-qty-wrap">
+                  <label for="abuelita-only-qty">Cups</label>
+                  <input type="number" name="abuelita_only_qty" id="abuelita-only-qty" min="0" value="0" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+
+            <p id="bundle-errors" class="order-split-error" role="alert"></p>
 
             <div class="order-summary">
-              <h4>Order Total</h4>
-              <p id="order-summary">0 vanilla + 0 chocolate = $0</p>
-              <p class="total" id="order-total">$0</p>
+              <h4>Order total</h4>
+              <p id="order-summary">Nothing selected yet</p>
+              <p class="total" id="order-total">$0.00</p>
               <input type="hidden" name="order_total" id="order-total-hidden" value="0">
+              <input type="hidden" name="order_summary" id="order-summary-hidden" value="">
+              <input type="hidden" name="vanilla_qty" id="vanilla-qty-total" value="0">
+              <input type="hidden" name="chocolate_qty" id="chocolate-qty-total" value="0">
+              <input type="hidden" name="abuelita_total_cups" id="abuelita-total-cups" value="0">
             </div>
 
             <h3 style="margin: 2rem 0 1rem; color: var(--color-chocolate);">Your Information</h3>

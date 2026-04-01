@@ -5,6 +5,6 @@ A static website for **FCA Baking** — authentic Mexican conchas in Manhattan, 
 ## Features
 
 - **Home** – Hero, concha showcase, about preview
-- **Menu** – Vanilla & chocolate conchas ($3 each)
-- **Order** – Form for conchas, contact info, address, payment (Cash/CashApp)
+- **Menu** – Concha bundles ($3 combo with Abuelita, 2/$5, 4/$9, 8/$17), Abuelitas hot chocolate ($3.50/cup)
+- **Order** – Bundle mix (vanilla/chocolate per deal), hot chocolate, contact, address, payment (Cash/CashApp)
 - **About** – Story, how it works
